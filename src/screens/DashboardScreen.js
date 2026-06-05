@@ -6,7 +6,7 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from 'react-native';
-import ChatWidgetOverlay from '../components/ChatWidget';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const STATS = [
   { label: 'Active Projects', value: '12', color: '#F5A623' },
@@ -22,9 +22,10 @@ const RECENT = [
 ];
 
 export default function DashboardScreen() {
+  const insets = useSafeAreaInsets();
   return (
     <View style={styles.root}>
-      <View style={styles.header}>
+      <View style={[styles.header, { paddingTop: insets.top + 12 }]}>
         <Text style={styles.headerSub}>Good Morning 👷</Text>
         <Text style={styles.headerTitle}>Site Dashboard</Text>
       </View>
@@ -64,7 +65,6 @@ export default function DashboardScreen() {
         </TouchableOpacity>
       </ScrollView>
 
-      <ChatWidgetOverlay />
     </View>
   );
 }
@@ -73,7 +73,6 @@ const styles = StyleSheet.create({
   root: { flex: 1, backgroundColor: '#F2F2F7' },
   header: {
     backgroundColor: '#1C1C1E',
-    paddingTop: 56,
     paddingBottom: 20,
     paddingHorizontal: 20,
   },

@@ -6,7 +6,7 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from 'react-native';
-import ChatWidgetOverlay from '../components/ChatWidget';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const JOBS = [
   {
@@ -61,10 +61,11 @@ const JOBS = [
 
 export default function ActiveJobsScreen() {
   const [expanded, setExpanded] = useState(null);
+  const insets = useSafeAreaInsets();
 
   return (
     <View style={styles.root}>
-      <View style={styles.header}>
+      <View style={[styles.header, { paddingTop: insets.top + 12 }]}>
         <Text style={styles.headerSub}>Field Operations</Text>
         <Text style={styles.headerTitle}>Active Jobs</Text>
         <Text style={styles.headerCount}>{JOBS.length} jobs running</Text>
@@ -113,7 +114,6 @@ export default function ActiveJobsScreen() {
         ))}
       </ScrollView>
 
-      <ChatWidgetOverlay />
     </View>
   );
 }
@@ -122,7 +122,6 @@ const styles = StyleSheet.create({
   root: { flex: 1, backgroundColor: '#F2F2F7' },
   header: {
     backgroundColor: '#2C3E50',
-    paddingTop: 56,
     paddingBottom: 20,
     paddingHorizontal: 20,
   },

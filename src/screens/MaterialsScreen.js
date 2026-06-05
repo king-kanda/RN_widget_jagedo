@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   TextInput,
 } from 'react-native';
-import ChatWidgetOverlay from '../components/ChatWidget';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const MATERIALS = [
   { id: '1', name: 'Portland Cement (50kg)', unit: 'Bags', stock: 420, min: 100, category: 'Concrete' },
@@ -34,6 +34,7 @@ function stockStatus(stock, min) {
 export default function MaterialsScreen() {
   const [search, setSearch] = useState('');
   const [activeCategory, setActiveCategory] = useState('All');
+  const insets = useSafeAreaInsets();
 
   const filtered = MATERIALS.filter((m) => {
     const matchCat = activeCategory === 'All' || m.category === activeCategory;
@@ -45,7 +46,7 @@ export default function MaterialsScreen() {
 
   return (
     <View style={styles.root}>
-      <View style={styles.header}>
+      <View style={[styles.header, { paddingTop: insets.top + 12 }]}>
         <Text style={styles.headerSub}>Inventory</Text>
         <Text style={styles.headerTitle}>Materials</Text>
         {lowCount > 0 && (
@@ -105,7 +106,6 @@ export default function MaterialsScreen() {
         )}
       </ScrollView>
 
-      <ChatWidgetOverlay />
     </View>
   );
 }
@@ -114,7 +114,6 @@ const styles = StyleSheet.create({
   root: { flex: 1, backgroundColor: '#F2F2F7' },
   header: {
     backgroundColor: '#3D2B1F',
-    paddingTop: 56,
     paddingBottom: 20,
     paddingHorizontal: 20,
   },
