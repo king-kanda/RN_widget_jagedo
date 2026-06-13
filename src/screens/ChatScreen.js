@@ -13,7 +13,7 @@ import {
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const API_BASE = 'https://api.cloud.nexuswave.ai';
-const APP_TOKEN = 'demo-token';
+const APP_TOKEN = 'nw_8fSTp10JZNf0gIpVPkAWsGX2';
 const SESSION_ID = 'rn-user-' + Math.random().toString(36).substr(2, 9);
 const POLLING_MS = 10000;
 
