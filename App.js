@@ -7,7 +7,7 @@ import { SafeAreaProvider, useSafeAreaInsets } from 'react-native-safe-area-cont
 import DashboardScreen from './src/screens/DashboardScreen';
 import ActiveJobsScreen from './src/screens/ActiveJobsScreen';
 import MaterialsScreen from './src/screens/MaterialsScreen';
-import ChatWidgetOverlay from './src/components/ChatWidget';
+import ChatScreen from './src/screens/ChatScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -15,6 +15,7 @@ const ICONS = {
   Dashboard: '🏗️',
   'Active Jobs': '🦺',
   Materials: '🧱',
+  Chat: '💬',
 };
 
 function TabNavigator() {
@@ -44,6 +45,7 @@ function TabNavigator() {
       <Tab.Screen name="Dashboard" component={DashboardScreen} />
       <Tab.Screen name="Active Jobs" component={ActiveJobsScreen} />
       <Tab.Screen name="Materials" component={MaterialsScreen} />
+      <Tab.Screen name="Chat" component={ChatScreen} />
     </Tab.Navigator>
   );
 }
@@ -54,7 +56,6 @@ export default function App() {
       <NavigationContainer>
         <TabNavigator />
       </NavigationContainer>
-      <ChatWidgetOverlay />
     </SafeAreaProvider>
   );
 }
