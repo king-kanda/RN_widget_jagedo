@@ -79,7 +79,7 @@ async function sendMessage(text) {
   const res = await fetch('https://api.cloud.nexuswave.ai/widget/incoming', {
     method: 'POST',
     headers: {
-      Authorization: 'Bearer nw_8fSTp10JZNf0gIpVPkAWsGX2',
+      Authorization: 'Bearer nw_BKgQFAWNCHg7-RHecvPJa1Ul',
     },
     body: form,
   });
@@ -126,7 +126,7 @@ async function fetchMessages() {
     `https://api.cloud.nexuswave.ai/widget/getmessages/${SESSION_ID}`,
     {
       headers: {
-        Authorization: 'Bearer nw_8fSTp10JZNf0gIpVPkAWsGX2',
+        Authorization: 'Bearer nw_BKgQFAWNCHg7-RHecvPJa1Ul',
         'Content-Type': 'application/json',
       },
     }
